@@ -67,9 +67,10 @@ def main():
     screen = Screen(height=SCREEN_HEIGHT, width=SCREEN_WIDTH, refresh_rate=refresh_rate)
 
     # positioning the snake in the middle of the screen
-    snake = Snake(ScreenObject(x_pos=int(screen.size.width / 2), y_pos=int(screen.size.height / 2), character='°',
-                               screen_size=screen.size))
-    food = ScreenObject(character='¤', x_pos=0, y_pos=0, screen_size=screen.size)
+    snake = Snake(ScreenObject(character='°', screen_size=screen.size, x_pos=int(screen.size.width / 2), 
+                                y_pos=int(screen.size.height / 2)) 
+                                                             )
+    food = ScreenObject(character='¤', screen_size=screen.size, x_pos=0, y_pos=0)
     food.set_random_position(objs_to_not_collide_with=snake.get_all_parts())
 
     screen + snake.get_all_parts()
