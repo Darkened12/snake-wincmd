@@ -22,7 +22,7 @@ def intro():
         choice = input("""Hello! Ready to play Snake?
 Control the snake with WASD. Any other key you press will quit the game!
 
-Note: will should not run this in Pycharm! Run in cmd.exe!
+Note: you should not run this in Pycharm or similar IDEs! Run in cmd.exe with "python main.py"!
 
 Type "play" to start playing or "quit" to quit!
 :> """)

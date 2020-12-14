@@ -82,32 +82,26 @@ class Screen:
         screen = [lines.copy() for n in range(self.height)]
         return screen
 
-    def get_screen(self):
-        """Adds all ScreenObject's and returns a printable string representation"""
+    def get_raw_screen(self):
+        """Adds all ScreenObject objects to a blank screen and return a 2D list"""
         self.cls()
         screen = self._get_blank_screen()
-
-        # Checking if there are objects with equal positions
         for obj in self.screen_objs:
             try:
                 screen[obj.y_pos][obj.x_pos] = obj.character
             except IndexError:
                 raise IndexError(f'Wrong Screen position (x={obj.x_pos}, y={obj.y_pos}) for object "{obj.character}"')
+        return screen
 
+    def get_screen(self):
+        """Returns a printable string representation from Screen.get_raw_screen()"""
+        screen = self.get_raw_screen()
         result = ""
         for line in screen:
             string = "".join(line)
             string += "\n"
             result += string
         return result
-
-    def get_raw_screen(self):
-        """Same as Screen.get_screen() but returns a 2D list instead"""
-        self.cls()
-        screen = self._get_blank_screen()
-        for obj in self.screen_objs:
-            screen[obj.y_pos][obj.x_pos] = obj.character
-        return screen
 
     def print_screen(self):
         """The high level Screen.get_screen() method with print() and time.sleep() already implemented"""

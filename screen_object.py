@@ -69,7 +69,7 @@ class ScreenObject:
             return False
 
     def _is_out_of_screen(self):
-        """Complicated way to check whether a object is out of screen or not"""
+        """Complicated way to check whether a object is out of screen or not then flips its position if it is"""
         if self.y_pos >= self._screen_size.height:
             self.y_pos -= self._screen_size.height
         elif self.y_pos < 0:
